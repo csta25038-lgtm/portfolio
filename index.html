@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio | University Student</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --primary-color: #2c7da0; /* 知的で清潔感のあるブルーグリーン */
+            --text-color: #333333;
+            --bg-color: #ffffff;
+            --bg-light: #f8f9fa;
+            --accent-color: #a9d6e5;
+            --font-main: 'Noto Sans JP', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text-color);
+            line-height: 1.8;
+            background-color: var(--bg-color);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- Layout Utilities --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 20px auto 0;
+        }
+
+        /* --- Header --- */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--bg-light) 0%, #eef6f8 100%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 0.05em;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50px;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(44, 125, 160, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(44, 125, 160, 0.4);
+        }
+
+        /* --- About Section (Gakuchika) --- */
+        #about {
+            background-color: var(--bg-color);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .strength-card {
+            background-color: var(--bg-light);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        .strength-header {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+        }
+
+        .strength-header h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .strength-lead {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .strength-body h4 {
+            font-size: 1.1rem;
+            margin: 25px 0 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .strength-body h4::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .conclusion {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #eef6f8;
+            border-radius: 8px;
+            color: var(--primary-color);
+            font-weight: 700;
+            text-align: center;
+        }
+
+        /* --- Skills Section --- */
+        #skills {
+            background-color: var(--bg-light);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            transition: 0.3s;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-name {
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: block;
+            font-size: 1.2rem;
+        }
+
+        /* --- Works Section --- */
+        #works {
+            background-color: var(--bg-color);
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .work-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            background: white;
+        }
+
+        .work-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .work-image {
+            width: 100%;
+            height: 200px;
+            background-color: #ddd; /* ダミー画像用 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+        }
+
+        .work-info {
+            padding: 25px;
+        }
+
+        .work-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .work-desc {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.9rem;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; } /* 簡易的にモバイルでは非表示にしています */
+            .section { padding: 60px 0; }
+            .strength-card { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">My Portfolio</div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#works">Works</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Hello, I'm 紺野 巧</h1>
+            <p>大学生 / Webデザイン学習中 / 自己管理が得意</p>
+            <a href="#about" class="btn">もっと詳しく</a>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="strength-card">
+                    <div class="strength-header">
+                        <h3>私の強み：自己管理能力と継続力</h3>
+                        <p class="strength-lead">「3年間の無遅刻・無欠席」を達成した徹底的なプロセス</p>
+                    </div>
+                    <div class="strength-body">
+                        <p>
+                            高校入学時、学業や部活動に全力で取り組むための基盤は「健康」であると考え、自分自身の管理能力を示す証として「3年間の無遅刻・無欠席」を目標に掲げました。
+                            健康であることに甘んじることなく、それを「維持し続ける」こと自体を重要な課題と捉え、以下の2点を徹底しました。
+                        </p>
+
+                        <h4>1. 健康状態の維持管理</h4>
+                        <p>
+                            バランスの取れた食事や十分な睡眠はもちろん、感染症予防のための手洗いやうがい、日々のストレッチなども欠かさず、生活リズムを厳格に守り続けました。
+                        </p>
+
+                        <h4>2. 時間と準備の管理</h4>
+                        <p>
+                            遅刻を防ぐため常に「15分前行動」を意識し、アラームの二重設定や前夜の持ち物確認を徹底しました。
+                            また、悪天候や交通機関の遅れも予測し、不測の事態にも対応できる余裕を持って行動することを習慣化しました。
+                        </p>
+                    </div>
+                    <div class="conclusion">
+                        この経験から、目標のために自分を律する「自己管理能力」と、<br>日々の努力を油断なく積み重ねる「継続力」を身につけました。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <span class="skill-name">HTML / CSS</span>
+                    <p>基礎的なコーディングとレスポンシブ対応が可能です。</p>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">JavaScript</span>
+                    <p>Webサイトに動きをつけることができます。</p>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Design Tools</span>
+                    <p>FigmaやCanvaを使用したデザイン作成。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="works" class="section">
+        <div class="container">
+            <h2 class="section-title">Works</h2>
+            <div class="works-grid">
+                <div class="work-item">
+                    <div class="work-image">Image</div>
+                    <div class="work-info">
+                        <h3 class="work-title">ポートフォリオサイト</h3>
+                        <p class="work-desc">自身の活動を紹介するためのWebサイトです。HTML/CSSで作成しました。</p>
+                    </div>
+                </div>
+                <div class="work-item">
+                    <div class="work-image">Image</div>
+                    <div class="work-info">
+                        <h3 class="work-title">架空のカフェサイト</h3>
+                        <p class="work-desc">架空のカフェのランディングページをデザイン・実装しました。</p>
+                    </div>
+                </div>
+                <div class="work-item">
+                    <div class="work-image">Image</div>
+                    <div class="work-info">
+                        <h3 class="work-title">バナーデザイン</h3>
+                        <p class="work-desc">キャンペーン用のバナーデザインの練習作品です。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <p>Contact: your.email@example.com</p>
+            <p>&copy; 2025 My Portfolio. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
