@@ -11,11 +11,14 @@
     <style>
         /* --- CSS Variables & Reset --- */
         :root {
-            --primary-color: #2c7da0; /* 知的で清潔感のあるブルーグリーン */
+            /* 【色を変更】落ち着きのある温かい赤色 */
+            --primary-color: #d9534f; 
+            /* 【色を変更】アクセント用の薄い赤色 */
+            --accent-color: #f9e2e4;
+            
             --text-color: #333333;
             --bg-color: #ffffff;
-            --bg-light: #f8f9fa;
-            --accent-color: #a9d6e5;
+            --bg-light: #fff5f6; /* 背景色もほんのり赤みを持たせて統一感を出しました */
             --font-main: 'Noto Sans JP', sans-serif;
         }
 
@@ -113,7 +116,8 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(135deg, var(--bg-light) 0%, #eef6f8 100%);
+            /* グラデーションも赤系に変更 */
+            background: linear-gradient(135deg, var(--bg-light) 0%, #ffecec 100%);
         }
 
         .hero h1 {
@@ -136,12 +140,14 @@
             color: white;
             border-radius: 50px;
             font-weight: 500;
-            box-shadow: 0 4px 15px rgba(44, 125, 160, 0.3);
+            /* 影の色も赤系に合わせて調整 */
+            box-shadow: 0 4px 15px rgba(217, 83, 79, 0.3);
         }
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(44, 125, 160, 0.4);
+            box-shadow: 0 6px 20px rgba(217, 83, 79, 0.4);
+            background-color: #c9302c; /* ホバー時に少し濃く */
         }
 
         /* --- About Section (Gakuchika) --- */
@@ -164,26 +170,35 @@
 
         .strength-header {
             margin-bottom: 30px;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 2px solid var(--accent-color); /* 線の色を変更 */
             padding-bottom: 20px;
         }
 
         .strength-header h3 {
-            font-size: 1.5rem;
+            font-size: 1.6rem; /* 少し大きく */
             color: var(--primary-color);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .strength-lead {
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
         }
 
+        /* 【見やすさ向上】本文の行間をさらに広げて読みやすく */
+        .strength-body p {
+            line-height: 2.1;
+            margin-bottom: 1.5em;
+        }
+
+        /* 【見やすさ向上】小見出しを赤色にして強調し、区切りを明確に */
         .strength-body h4 {
-            font-size: 1.1rem;
-            margin: 25px 0 10px;
+            font-size: 1.25rem;
+            color: var(--primary-color); /* 赤色にする */
+            margin: 40px 0 20px; /* 上下の余白を広げる */
             display: flex;
             align-items: center;
+            font-weight: 700;
         }
 
         .strength-body h4::before {
@@ -193,17 +208,19 @@
             height: 8px;
             background-color: var(--primary-color);
             border-radius: 50%;
-            margin-right: 10px;
+            margin-right: 12px;
         }
 
         .conclusion {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #eef6f8;
-            border-radius: 8px;
-            color: var(--primary-color);
+            margin-top: 40px;
+            padding: 30px;
+            background-color: var(--accent-color); /* 背景色を薄い赤に */
+            border-radius: 12px;
+            color: #c9302c; /* 文字色を少し濃い赤に */
             font-weight: 700;
             text-align: center;
+            font-size: 1.1rem;
+            line-height: 2;
         }
 
         /* --- Skills Section --- */
@@ -224,10 +241,12 @@
             text-align: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.03);
             transition: 0.3s;
+            border-top: 3px solid transparent; /* ホバー時の線の準備 */
         }
 
         .skill-item:hover {
             transform: translateY(-5px);
+            border-top: 3px solid var(--primary-color); /* ホバー時に赤線を表示 */
         }
 
         .skill-name {
@@ -235,6 +254,7 @@
             margin-bottom: 10px;
             display: block;
             font-size: 1.2rem;
+            color: var(--primary-color); /* スキル名も赤に */
         }
 
         /* --- Works Section --- */
@@ -264,11 +284,12 @@
         .work-image {
             width: 100%;
             height: 200px;
-            background-color: #ddd; /* ダミー画像用 */
+            background-color: var(--accent-color); /* ダミー画像の色も薄い赤に */
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #888;
+            color: var(--primary-color);
+            font-weight: bold;
         }
 
         .work-info {
@@ -299,9 +320,11 @@
         /* --- Responsive --- */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
-            .nav-links { display: none; } /* 簡易的にモバイルでは非表示にしています */
+            .nav-links { display: none; }
             .section { padding: 60px 0; }
             .strength-card { padding: 25px; }
+            /* モバイルで見やすいように少し詰める */
+            .strength-body p { line-height: 1.9; } 
         }
     </style>
 </head>
@@ -323,7 +346,7 @@
 
     <section class="hero">
         <div class="container">
-            <h1>Hello, I'm takumi</h1>
+            <h1>Hello, I'm [Your Name]</h1>
             <p>大学生 / Webデザイン学習中 / 自己管理が得意</p>
             <a href="#about" class="btn">もっと詳しく</a>
         </div>
